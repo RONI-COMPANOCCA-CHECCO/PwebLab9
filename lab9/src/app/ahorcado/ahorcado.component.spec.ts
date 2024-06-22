@@ -23,6 +23,20 @@ export class AhorcadoComponent implements OnInit {
     this.intentosRestantes = 6; // 
   }
 
+  proponerLetra(letra: string): void {
+    if (this.intentosRestantes > 0 && this.palabraSecreta.includes(letra)) {
+      for (let i = 0; i < this.palabraSecreta.length; i++) {
+        if (this.palabraSecreta[i] === letra) {
+          this.letrasAdivinadas[i] = letra;
+        }
+      }
+    } else {
+      this.intentosRestantes--;
+    }
+
+    this.verificarEstadoJuego();
+  }
+
   verificarEstadoJuego(): void {
     if (!this.letrasAdivinadas.includes('_')) {
       alert('¡Ganaste!');
