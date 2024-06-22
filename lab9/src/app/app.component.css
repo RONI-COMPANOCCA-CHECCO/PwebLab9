@@ -1,0 +1,15 @@
+.palabra {
+    font-size: 2em;
+    margin-bottom: 10px;
+  }
+  
+  .letras-disponibles {
+    margin-top: 20px;
+  }
+  
+  button {
+    margin: 5px;
+    padding: 5px 10px;
+    font-size: 1.2em;
+  }
+  
