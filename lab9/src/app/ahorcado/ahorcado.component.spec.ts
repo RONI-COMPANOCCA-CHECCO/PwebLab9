@@ -22,4 +22,14 @@ export class AhorcadoComponent implements OnInit {
     this.letrasAdivinadas = Array(this.palabraSecreta.length).fill('_');
     this.intentosRestantes = 6; // 
   }
+
+  verificarEstadoJuego(): void {
+    if (!this.letrasAdivinadas.includes('_')) {
+      alert('¡Ganaste!');
+      this.iniciarJuego();
+    } else if (this.intentosRestantes === 0) {
+      alert('¡Perdiste! La palabra era: ' + this.palabraSecreta);
+      this.iniciarJuego();
+    }
+  }
 }
