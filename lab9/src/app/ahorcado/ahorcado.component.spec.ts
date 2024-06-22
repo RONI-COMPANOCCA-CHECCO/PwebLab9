@@ -1,49 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-@Component({
-  selector: 'app-ahorcado',
-  templateUrl: './ahorcado.component.html',
-  styleUrls: ['./ahorcado.component.css']
-})
+import { AhorcadoComponent } from './ahorcado.component';
 
-export class AhorcadoComponent implements OnInit {
-  palabrasAAdivinar: string[] = ['ANGULAR', 'JAVASCRIPT', 'HTML', 'CSS', 'PROGRAMACION'];
-  palabraSecreta: string = '';
-  letrasAdivinadas: string[] = [];
-  intentosRestantes: number = 6; 
+describe('AhorcadoComponent', () => {
+  let component: AhorcadoComponent;
+  let fixture: ComponentFixture<AhorcadoComponent>;
 
-  ngOnInit(): void {
-    this.iniciarJuego();
-  }
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [AhorcadoComponent]
+    })
+    .compileComponents();
 
-  iniciarJuego(): void {
-    const randomIndex = Math.floor(Math.random() * this.palabrasAAdivinar.length);
-    this.palabraSecreta = this.palabrasAAdivinar[randomIndex];
-    this.letrasAdivinadas = Array(this.palabraSecreta.length).fill('_');
-    this.intentosRestantes = 6; // 
-  }
+    fixture = TestBed.createComponent(AhorcadoComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-  proponerLetra(letra: string): void {
-    if (this.intentosRestantes > 0 && this.palabraSecreta.includes(letra)) {
-      for (let i = 0; i < this.palabraSecreta.length; i++) {
-        if (this.palabraSecreta[i] === letra) {
-          this.letrasAdivinadas[i] = letra;
-        }
-      }
-    } else {
-      this.intentosRestantes--;
-    }
-
-    this.verificarEstadoJuego();
-  }
-
-  verificarEstadoJuego(): void {
-    if (!this.letrasAdivinadas.includes('_')) {
-      alert('¡Ganaste!');
-      this.iniciarJuego();
-    } else if (this.intentosRestantes === 0) {
-      alert('¡Perdiste! La palabra era: ' + this.palabraSecreta);
-      this.iniciarJuego();
-    }
-  }
-}
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
