@@ -1,1 +1,13 @@
-<p>ahorcado works!</p>
+<p<div>
+    <h1>Juego del Ahorcado</h1>
+    <p>Palabra a adivinar:</p>
+    <div class="palabra">
+      <span *ngFor="letras Adivinadas">{{ letra }}</span>
+    </div>
+    <div class="letras disponibles">
+      <p>Letras disponibles:</p>
+      <button *ngFor="let letra of 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')" (click)="proponerLetra(letra)" [disabled]="!letrasDisponibles.includes(letra)">{{ letra }}</button>
+    </div>
+    <p>Intentos restantes: {{ intentosRestantes }}</p>
+  </div>
+  
