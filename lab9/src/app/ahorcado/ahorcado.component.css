@@ -9,6 +9,30 @@
     justify-content: center;
     margin-top: 20px;
   }
+  section {
+    text-align: left; /* Centrar el contenido horizontalmente */
+  }
+  
+  section button {
+    padding: 40px 60px; /* Ajustar el padding para hacer el botón más grande */
+    font-size: 1em; /* Ajustar el tamaño de fuente */
+    background-color: #b91bac; /* Cambiar el color de fondo del botón (ejemplo) */
+    color: #ffffff; /* Cambiar el color del texto del botón */
+    border: none; /* Quitar el borde del botón */
+    cursor: pointer; /* Cambiar el cursor al pasar por encima del botón */
+    display: block; /* Asegurar que el botón ocupe todo el ancho disponible */
+    margin: 0 auto; /* Centrar el botón dentro de la sección */
+  }
+  
+  section button:hover {
+    background-color: #9c0f96; /* Cambiar el color de fondo al pasar el ratón por encima (ejemplo) */
+  }
+  
+  
+  .reiniciar-boton:hover {
+    background-color: #0056b3; /* Cambiar el color de fondo al pasar el ratón por encima (ejemplo) */
+  }
+  
   h1 {
     color: #ff69b4; /* Color rosado */
     text-shadow: 2px 2px 4px rgba(20, 17, 17, 0.808); /* Sombra blanca con desplazamiento de 2px en horizontal y vertical, difuminación de 4px */
@@ -58,4 +82,13 @@ p {
   .alert-danger {
     color: #dc3545;
   }
+  button {
+    font-size: 16px; /* Tamaño de fuente base para todos los botones */
+    padding: 10px 20px; /* Padding para espaciar el contenido del botón */
+    margin: 5px; /* Margen entre los botones */
+  }
   
+  button.reiniciar {
+    font-size: 20px; /* Aumentar el tamaño de la fuente */
+    padding: 15px 30px; /* Aumentar el padding para hacer el botón más grande */
+  }

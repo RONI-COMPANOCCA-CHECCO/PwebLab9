@@ -1,14 +1,39 @@
 <div class="container">
     <h1>Juego del Ahorcado</h1>
     <h1>{{ palabraOculta }}</h1>
-    <div *ngIf="gano" class="alert alert-success">¡Felicidades, ganaste!</div>
-    <div *ngIf="perdio" class="alert alert-danger">Lo siento, perdiste. La palabra era {{ palabra }}</div>
+    <div [style.display]="gano ? 'block' : 'none'" class="alert alert-success">¡Felicidades, ganaste!</div>
+    <div [style.display]="perdio ? 'block' : 'none'" class="alert alert-danger">Lo siento, perdiste. La palabra era {{ palabraSeleccionada }}</div>
     <div class="letras">
-        <button *ngFor="let letra of palabra.split('')" 
-                (click)="comprobar(letra)" 
-                [disabled]="gano || perdio || palabraOculta.includes(letra)">
-            {{ letra }}
-        </button>
-    </div>
-    <h2><p>Intentos: {{ intentos }}</p></h2>
+        <button [disabled]="letrasUsadas.has('A')" (click)="comprobar('A')">A</button>
+        <button [disabled]="letrasUsadas.has('B')" (click)="comprobar('B')">B</button>
+        <button [disabled]="letrasUsadas.has('C')" (click)="comprobar('C')">C</button>
+        <button [disabled]="letrasUsadas.has('D')" (click)="comprobar('D')">D</button>
+        <button [disabled]="letrasUsadas.has('E')" (click)="comprobar('E')">E</button>
+        <button [disabled]="letrasUsadas.has('F')" (click)="comprobar('F')">F</button>
+        <button [disabled]="letrasUsadas.has('G')" (click)="comprobar('G')">G</button>
+        <button [disabled]="letrasUsadas.has('H')" (click)="comprobar('H')">H</button>
+        <button [disabled]="letrasUsadas.has('I')" (click)="comprobar('I')">I</button>
+        <button [disabled]="letrasUsadas.has('J')" (click)="comprobar('J')">J</button>
+        <button [disabled]="letrasUsadas.has('K')" (click)="comprobar('K')">K</button>
+        <button [disabled]="letrasUsadas.has('L')" (click)="comprobar('L')">L</button>
+        <button [disabled]="letrasUsadas.has('M')" (click)="comprobar('M')">M</button>
+        <button [disabled]="letrasUsadas.has('N')" (click)="comprobar('N')">N</button>
+        <button [disabled]="letrasUsadas.has('Ñ')" (click)="comprobar('Ñ')">Ñ</button>
+        <button [disabled]="letrasUsadas.has('O')" (click)="comprobar('O')">O</button>
+        <button [disabled]="letrasUsadas.has('P')" (click)="comprobar('P')">P</button>
+        <button [disabled]="letrasUsadas.has('Q')" (click)="comprobar('Q')">Q</button>
+        <button [disabled]="letrasUsadas.has('R')" (click)="comprobar('R')">R</button>
+        <button [disabled]="letrasUsadas.has('S')" (click)="comprobar('S')">S</button>
+        <button [disabled]="letrasUsadas.has('T')" (click)="comprobar('T')">T</button>
+        <button [disabled]="letrasUsadas.has('U')" (click)="comprobar('U')">U</button>
+        <button [disabled]="letrasUsadas.has('V')" (click)="comprobar('V')">V</button>
+        <button [disabled]="letrasUsadas.has('W')" (click)="comprobar('W')">W</button>
+        <button [disabled]="letrasUsadas.has('X')" (click)="comprobar('X')">X</button>
+        <button [disabled]="letrasUsadas.has('Y')" (click)="comprobar('Y')">Y</button>
+        <button [disabled]="letrasUsadas.has('Z')" (click)="comprobar('Z')">Z</button>
+      </div>
+    <h2><p>Intentos restantes: {{ intentosRestantes }}</p></h2>
+    <section>
+        <button (click)="reiniciarJuego()">Reiniciar Juego</button>
+      </section>
 </div>

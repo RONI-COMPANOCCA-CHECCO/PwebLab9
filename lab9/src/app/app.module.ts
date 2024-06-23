@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common'; 
 import { AppRoutingModule } from './app.routes';
 import { AppComponent } from './app.component';
 import { AhorcadoComponent } from './ahorcado/ahorcado.component';
-
+import { AhorcadoModule } from './ahorcado/ahorcado.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -11,7 +12,9 @@ import { AhorcadoComponent } from './ahorcado/ahorcado.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AhorcadoModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
