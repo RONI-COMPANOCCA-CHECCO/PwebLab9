@@ -1,6 +1,6 @@
 <div class="container">
     <h1>Juego del Ahorcado</h1>
-    <h3>{{ palabraOculta }}</h3>
+    <h1>{{ palabraOculta }}</h1>
     <div *ngIf="gano" class="alert alert-success">¡Felicidades, ganaste!</div>
     <div *ngIf="perdio" class="alert alert-danger">Lo siento, perdiste. La palabra era {{ palabra }}</div>
     <div class="letras">
@@ -10,7 +10,7 @@
         {{ letra }}
       </button>
     </div>
-    <p>Intentos: {{ intentos }}</p>
-  </div>
+    <h2><p>Intentos: {{ intentos }}</p></h2>
+</div>
   
   

@@ -9,7 +9,17 @@
     justify-content: center;
     margin-top: 20px;
   }
-  
+  h1 {
+    color: #ff69b4; /* Color rosado */
+    text-shadow: 2px 2px 4px rgba(20, 17, 17, 0.808); /* Sombra blanca con desplazamiento de 2px en horizontal y vertical, difuminación de 4px */
+    text-align: center; /* Alinea el texto al centro si es necesario */
+}
+
+p {
+    color: #a13d6f; /* Color rosado */
+    text-shadow: 2px 2px 4px rgba(20, 17, 17, 0.808); /* Sombra blanca con desplazamiento de 2px en horizontal y vertical, difuminación de 4px */
+    text-align: center; /* Alinea el texto al centro si es necesario */
+}
   button {
     margin: 5px;
     width: 40px;
