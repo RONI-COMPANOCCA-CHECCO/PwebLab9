@@ -4,13 +4,11 @@
     <div *ngIf="gano" class="alert alert-success">¡Felicidades, ganaste!</div>
     <div *ngIf="perdio" class="alert alert-danger">Lo siento, perdiste. La palabra era {{ palabra }}</div>
     <div class="letras">
-      <button *ngFor="let letra of letras" 
-              (click)="comprobar(letra)" 
-              [disabled]="gano || perdio || palabraOculta.includes(letra)">
-        {{ letra }}
-      </button>
+        <button *ngFor="let letra of palabra.split('')" 
+                (click)="comprobar(letra)" 
+                [disabled]="gano || perdio || palabraOculta.includes(letra)">
+            {{ letra }}
+        </button>
     </div>
     <h2><p>Intentos: {{ intentos }}</p></h2>
 </div>
-  
-  
