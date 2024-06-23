@@ -1,13 +1,16 @@
-<a routerLink="/ahorcado">Juego del Ahorcado</a>
-<p<div>
+<div class="container">
     <h1>Juego del Ahorcado</h1>
-    <p>Palabra a adivinar:</p>
-    <div class="palabra">
-      <span *ngFor="letras Adivinadas">{{ letra }}</span>
+    <h3>{{ palabraOculta }}</h3>
+    <div *ngIf="gano" class="alert alert-success">¡Felicidades, ganaste!</div>
+    <div *ngIf="perdio" class="alert alert-danger">Lo siento, perdiste. La palabra era {{ palabra }}</div>
+    <div class="letras">
+      <button *ngFor="let letra of letras" 
+              (click)="comprobar(letra)" 
+              [disabled]="gano || perdio || palabraOculta.includes(letra)">
+        {{ letra }}
+      </button>
     </div>
-    <div class="letras disponibles">
-      <p>Letras disponibles:</p>
-      <button *ngFor="let letra of 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')" (click)="proponerLetra(letra)" [disabled]="!letrasDisponibles.includes(letra)">{{ letra }}</button>
-    </div>
-    <p>Intentos restantes: {{ intentosRestantes }}</p>
+    <p>Intentos: {{ intentos }}</p>
   </div>
+  
+  

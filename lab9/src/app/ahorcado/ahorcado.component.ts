@@ -1,50 +1,57 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
 @Component({
   selector: 'app-ahorcado',
-  standalone: true,
-  imports: [],
   templateUrl: './ahorcado.component.html',
   styleUrls: ['./ahorcado.component.css']
 })
+export class AhorcadoComponent {
+  palabra = 'ANGULAR';
+  palabraOculta = '';
+  intentos = 0;
+  gano = false;
+  perdio = false;
+  letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+            'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S',
+            'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
-export class AhorcadoComponent implements OnInit {
-  palabrasAAdivinar: string[] = ['ANGULAR', 'JAVASCRIPT', 'HTML', 'CSS', 'PROGRAMACION'];
-  palabraSecreta: string = '';
-  letrasAdivinadas: string[] = [];
-  intentosRestantes: number = 6; 
-
-  ngOnInit(): void {
-    this.iniciarJuego();
+  constructor() {
+    this.palabraOculta = '_ '.repeat(this.palabra.length);
   }
 
-  iniciarJuego(): void {
-    const randomIndex = Math.floor(Math.random() * this.palabrasAAdivinar.length);
-    this.palabraSecreta = this.palabrasAAdivinar[randomIndex];
-    this.letrasAdivinadas = Array(this.palabraSecreta.length).fill('_');
-    this.intentosRestantes = 6; // 
-  }
+  comprobar(letra: string) {
+    this.existeLetra(letra);
 
-  proponerLetra(letra: string): void {
-    if (this.intentosRestantes > 0 && this.palabraSecreta.includes(letra)) {
-      for (let i = 0; i < this.palabraSecreta.length; i++) {
-        if (this.palabraSecreta[i] === letra) {
-          this.letrasAdivinadas[i] = letra;
-        }
+    const palabraOcultaArr = this.palabraOculta.split(' ');
+
+    for (let i = 0; i < this.palabra.length; i++) {
+      if (this.palabra[i] === letra) {
+        palabraOcultaArr[i] = letra;
       }
-    } else {
-      this.intentosRestantes--;
     }
 
-    this.verificarEstadoJuego();
+    this.palabraOculta = palabraOcultaArr.join(' ');
+    this.verificaGane();
   }
 
-  verificarEstadoJuego(): void {
-    if (!this.letrasAdivinadas.includes('_')) {
-      alert('¡Ganaste!');
-      this.iniciarJuego();
-    } else if (this.intentosRestantes === 0) {
-      alert('¡Perdiste! La palabra era: ' + this.palabraSecreta);
-      this.iniciarJuego();
+  verificaGane() {
+    const palabraArr = this.palabraOculta.split(' ');
+    const palabraEvaluar = palabraArr.join('');
+
+    if (palabraEvaluar === this.palabra) {
+      this.gano = true;
+    }
+
+    if (this.intentos >= 9) {
+      this.perdio = true;
+    }
+  }
+
+  existeLetra(letra: string) {
+    if (this.palabra.indexOf(letra) >= 0) {
+      // console.log('La letra existe ' + letra);
+    } else {
+      this.intentos++;
     }
   }
 }

@@ -1,27 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app.routes';
 import { AppComponent } from './app.component';
-import { AhorcadoComponent } from './ahorcado/ahorcado.component'; // Ajusta la ruta según la ubicación de AhorcadoComponent
-import { RouterModule, Routes } from '@angular/router';
-
-const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' }, // Ruta por defecto, ajusta según tu necesidad
-  { path: 'home', component: AppComponent }, // Ruta por defecto, ajusta según tu necesidad
-  { path: 'ahorcado', component: AhorcadoComponent },
-  // Otras rutas si las tienes
-];
+import { AhorcadoComponent } from './ahorcado/ahorcado.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AhorcadoComponent
-    // Asegúrate de agregar todos los componentes que tengas aquí
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
